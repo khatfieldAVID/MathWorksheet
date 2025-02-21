@@ -23,11 +23,11 @@ def print_problem(pdf, x, y, minuend, subtrahend):
 def print_answer(pdf, x, y, minuend, subtrahend, difference):
     """Print a subtraction problem with its answer at the specified x, y position."""
     pdf.set_xy(x, y)
-    pdf.cell(0, 8, f" {str(minuend).rjust(2)}", ln=True)
-    pdf.set_xy(x, y + 8)
-    pdf.cell(0, 8, f"-{str(subtrahend).rjust(2)}", ln=True)
-    pdf.set_xy(x, y + 16)
-    pdf.cell(0, 8, f" {str(difference).rjust(2)}", ln=True)
+    pdf.cell(0, 12, f" {str(minuend).rjust(2)}", ln=True)
+    pdf.set_xy(x, y + 12)
+    pdf.cell(0, 12, f"-{str(subtrahend).rjust(2)}", ln=True)
+    pdf.set_xy(x, y + 24)
+    pdf.cell(0, 12, f" {str(difference).rjust(2)}", ln=True)
 
 def create_worksheet(num_problems=10):
     """Create a worksheet and answer key with increased padding and spacing."""
@@ -64,10 +64,10 @@ def create_worksheet(num_problems=10):
     y_start = pdf.get_y() + 10
     for i in range(5):
         difference = problems[i][0] - problems[i][1]
-        print_answer(pdf, col1_x, y_start + i * 25, problems[i][0], problems[i][1], difference)
+        print_answer(pdf, col1_x, y_start + i * 36, problems[i][0], problems[i][1], difference)
     for i in range(5, 10):
         difference = problems[i][0] - problems[i][1]
-        print_answer(pdf, col2_x, y_start + (i - 5) * 25, problems[i][0], problems[i][1], difference)
+        print_answer(pdf, col2_x, y_start + (i - 5) * 36, problems[i][0], problems[i][1], difference)
     
     pdf.output("subtraction_worksheet.pdf")
 
