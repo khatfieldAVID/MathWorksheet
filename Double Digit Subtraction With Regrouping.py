@@ -64,4 +64,12 @@ def create_worksheet(num_problems=10):
     y_start = pdf.get_y() + 10
     for i in range(5):
         difference = problems[i][0] - problems[i][1]
-        print_answer
+        print_answer(pdf, col1_x, y_start + i * 25, problems[i][0], problems[i][1], difference)
+    for i in range(5, 10):
+        difference = problems[i][0] - problems[i][1]
+        print_answer(pdf, col2_x, y_start + (i - 5) * 25, problems[i][0], problems[i][1], difference)
+    
+    pdf.output("subtraction_worksheet.pdf")
+
+if __name__ == "__main__":
+    create_worksheet()
